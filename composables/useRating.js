@@ -20,8 +20,8 @@ export default () => {
     updatePlayer(athletes?.[state.index]);
 
     if (state.index === athletes.length) {
-      const awayAthletes = away.team.athletes;
-      const homeAthletes = home.team.athletes;
+      const awayAthletes = away.team.athletes.filter(athlete => athlete?.headshot?.href);
+      const homeAthletes = home.team.athletes.filter(athlete => athlete?.headshot?.href);
 
       const hotHome = state.ratings.filter(
         (ratedPlayer) =>

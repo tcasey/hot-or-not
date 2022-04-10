@@ -20,7 +20,7 @@ const props = defineProps({
   games: Array,
 });
 const router = useRouter()
-const { league, updateLeague } = useLeague();
+const { league } = useLeague();
 
 function goToRate(scheduledGame) {
   const home = getTeamId(scheduledGame, 'home').id

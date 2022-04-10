@@ -9,6 +9,5 @@ export default () => {
     state.league = data
   }
 
-
   return {...toRefs(state), updateLeague};
 }

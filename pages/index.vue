@@ -14,8 +14,7 @@ export default defineComponent({
     // const teams = await useTeams()
     // const games = await useGames()
     // composable for league state
-    const { league, updateLeague } = useLeague();
-    updateLeague('nba')
+    const { league } = useLeague();
     const [{ data: teams }, { data: games }] = await Promise.all([
       useFetch(`/api/teams?league=${league?.value}`),
       useFetch(`/api/games?league=${league?.value}`),

@@ -4,15 +4,7 @@
     <NuxtPage />
   </div>
 </template>
-<script>
-export default {
-  setup() {
-    const { league, updateLeague } = useLeague();
 
-    // updateLeague('nhl')
-  },
-}
-</script>
 <style>
 @import '@/assets/base.css';
 

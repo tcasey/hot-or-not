@@ -34,7 +34,9 @@ const league = computed(() => route.query.league);
 const { player, updatePlayer } = usePlayer();
 const { updateLeague } = useLeague();
 // update league based on url
-updateLeague(league);
+if (league.value) {
+  updateLeague(league.value);
+}
 // fetch players of the home team
 const { data: home } = await useAsyncData(
   "home",
@@ -93,7 +95,7 @@ updatePlayer(athletes?.value?.[index?.value]);
 }
 @media only screen and (max-width: 600px) {
   .rate img {
-    max-width: 164px;
+    max-width: 360px;
   }
   .hot span,
   .not span {

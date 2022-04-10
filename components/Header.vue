@@ -6,14 +6,29 @@
           <div class="logo">🔥/🚫</div>
         </NuxtLink>
       </slot>
-      <slot name="title"><h1 className="app-header__name">hot or not</h1></slot>
-      <span className="app-header__spacer" />
-      <slot name="toolbar"></slot>
+      <slot name="title"><h1 class="app-header__name">hot or not</h1></slot>
+      <span class="app-header__spacer"></span>
+    <slot name="toolbar">
+        <a class="action-link" @click="() => updateLeague('nba')">nba</a>
+        <a class="action-link" @click="() => updateLeague('nhl')">nhl</a>
+        <a class="action-link" @click="() => updateLeague('wnba')">wnba</a>
+        <a class="action-link" @click="() => updateLeague('mbb')">mbb</a>
+      </slot>
       <slot name="avatar"></slot>
     </div>
     <slot name="commandbar" class="command-bar"></slot>
   </header>
 </template>
+
+<script>
+export default {
+  setup() {
+    const { league, updateLeague } = useLeague();
+
+    return { updateLeague }
+  },
+}
+</script>
 
 <style scoped>
 
@@ -26,9 +41,11 @@
   background-color: var(--color-background-mute);
 }
 .app-header__spacer {
+  display: flex;
   flex-grow: 1;
+  width: auto;
 }
-.app-header h1 {
+.app-header .app-header__name {
   font: var(--subtitle-1);
 }
 

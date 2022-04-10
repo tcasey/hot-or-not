@@ -53,15 +53,16 @@ const awayTeamId = computed(() => route.query.away);
 
 // composable for player state
 const { player, updatePlayer } = usePlayer();
+const { league, updateLeague } = useLeague();
 // fetch players of the home team
 const { data: home } = await useAsyncData(
   "home",
-  () => $fetch(`/api/players?id=${homeTeamId.value}`)
+  () => $fetch(`/api/players?id=${homeTeamId.value}&league=${league.value}`)
 );
 // fetch players of the home team
 const { data: away } = await useAsyncData(
   "away",
-  () => $fetch(`/api/players?id=${awayTeamId.value}`)
+  () => $fetch(`/api/players?id=${awayTeamId.value}&league=${league.value}`)
 );
 
 

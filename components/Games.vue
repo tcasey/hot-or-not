@@ -1,15 +1,12 @@
 <template>
-  <div v-for="game in games" :key="game.uid" class="card schedule">
-    <h3>{{ parseDate(game.apiDate) }}</h3>
+  <div v-for="game in games" :key="game?.uid" class="card schedule">
+    <h3>{{ parseDate(game?.apiDate) }}</h3>
 
     <div
       v-for="scheduledGame in game.games"
       :key="scheduledGame?.uid"
       class="games"
     >
-      <!-- <NuxtLink :to="{name: 'rate', query: { home: getTeamId(scheduledGame, 'home').id, away: getTeamId(scheduledGame, 'away').id }}" class="game-name">
-        {{ scheduledGame?.shortName }}
-      </NuxtLink> -->
       <a @click="() => goToRate(scheduledGame)" class="action-link game-name">
         {{ scheduledGame?.shortName }}
       </a>
@@ -44,11 +41,15 @@ function getTeamId(game, homeaWay) {
 
 function parseDate(date) {
   // 20220409
-  const year = date.substring(0, 4);
-  const month = date.substring(4, 6);
-  const day = date.substring(6, 8);
+  if (date) {
+    const year = date.substring(0, 4);
+    const month = date.substring(4, 6);
+    const day = date.substring(6, 8);
 
-return `${Number(month)}/${day}/${year}`
+    return `${Number(month)}/${day}/${year}`
+  }
+
+  return date;
 }
 
 </script>

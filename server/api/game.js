@@ -15,7 +15,8 @@ import { useQuery } from 'h3';
 export default async (req, res) => {
   const query = useQuery(req);
   const gameId = query?.id;
-  const result = await sdv.nba.getBoxScore(gameId)
+  const league = query?.league || 'nba';
+  const result = await sdv[league].getBoxScore(gameId)
 
   return result;
 }

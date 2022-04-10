@@ -1,0 +1,207 @@
+/* color palette from <https://github.com/vuejs/theme> */
+:root {
+  --vt-c-white: #ffffff;
+  --vt-c-white-soft: #f8f8f8;
+  --vt-c-white-mute: #f2f2f2;
+
+  --vt-c-black: #181818;
+  --vt-c-black-soft: #222222;
+  --vt-c-black-mute: #282828;
+
+  --vt-c-indigo: #2c3e50;
+
+  --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
+  --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
+  --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
+  --vt-c-divider-dark-2: rgba(84, 84, 84, 0.48);
+
+  --vt-c-text-light-1: var(--vt-c-indigo);
+  --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
+  --vt-c-text-dark-1: var(--vt-c-white);
+  --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
+
+  --legal-1: normal normal 400 12px/18px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --body-3: normal normal 400 14px/20px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --body-2: normal normal 400 16px/24px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --body-1: normal normal 400 20px/28px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --subtitle-2: normal normal 500 14px/20px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --subtitle-1: normal normal 500 16px/24px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --title-6: normal normal 500 18px/24px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --title-5: normal normal 500 20px/24px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --title-4: normal normal 500 24px/28px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --title-3: normal normal 500 28px/32px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --title-2: normal normal 500 32px/36px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --title-1: normal normal 500 36px/40px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --display-5: normal normal 700 24px/22px "Helvetica Neue",Helvetica,Arial,sans-serif;
+  --display-4: normal normal 700 40px/34px "Helvetica Neue",Helvetica,Arial,sans-serif;
+  --display-3: normal normal 700 48px/40px "Helvetica Neue",Helvetica,Arial,sans-serif;
+  --display-2: normal normal 700 56px/48px "Helvetica Neue",Helvetica,Arial,sans-serif;
+  --display-1: normal normal 700 72px/62px "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+/* semantic color variables for this project */
+:root {
+  --color-background: var(--vt-c-white);
+  --color-background-soft: var(--vt-c-white-soft);
+  --color-background-mute: var(--vt-c-white-mute);
+  --color-background-cta: var(--vt-c-black);
+
+  --color-border: var(--vt-c-divider-light-2);
+  --color-border-hover: var(--vt-c-divider-light-1);
+
+  --color-heading: var(--vt-c-text-light-1);
+  --color-text: var(--vt-c-text-light-1);
+
+  --section-gap: 160px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: var(--vt-c-black);
+    --color-background-soft: var(--vt-c-black-soft);
+    --color-background-mute: var(--vt-c-black-mute);
+    --color-background-cta: var(--vt-c-white);
+
+
+    --color-border: var(--vt-c-divider-dark-2);
+    --color-border-hover: var(--vt-c-divider-dark-1);
+
+    --color-heading: var(--vt-c-text-dark-1);
+    --color-text: var(--vt-c-text-dark-2);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  position: relative;
+  font-weight: normal;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--color-text);
+  background: var(--color-background);
+  transition: color 0.5s, background-color 0.5s;
+  /* line-height: 24px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400; */
+  font: var(--body-1);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+h1 {
+  font: var(--title-1)
+}
+h2 {
+  font: var(--title-2)
+}
+h3 {
+  font: var(--title-3)
+}
+h4 {
+  font: var(--title-4)
+}
+h5 {
+  font: var(--title-5)
+}
+h6 {
+  font: var(--title-6)
+}
+
+.button {
+  border: none;
+  /* font-family: $base-font-family; */
+  font-size: 14px;
+  border-radius: 60px;
+  background: var(--color-background-cta);
+  color: var(--color-background);
+  padding: 5px 25px 5px 25px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.button:hover {
+  opacity: 0.85;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.25;
+  color: var(--color-background-cta);
+}
+
+.action-link {
+  background: transparent;
+  color: var(--color-background-cta);
+  font-weight: 500;
+  font-size: 16px;
+  cursor: pointer;
+}
+.action-link:hover {
+  text-decoration: underline;
+  opacity: 0.85;
+}
+
+h4 {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+}
+h5 {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.text-field {
+  padding: 8px 24px;
+  border-radius: 8px;
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: groove;
+  border: 1px solid  var(--color-text);
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+.text-field:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-text);
+}
+
+/* loading spinner */
+@keyframes eds-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.eds-spinner:focus-visible {
+  outline-offset: 12px;
+}
+.eds-spinner {
+  border-radius: 48px;
+  border: 3px solid var(--color-border-hover);
+  border-left: 3px solid var(--color-border);
+  transform: translateZ(0);
+  animation: eds-spin 700ms infinite linear;
+}
+.eds-spinner--large {
+  width: 48px;
+  height: 48px;
+}

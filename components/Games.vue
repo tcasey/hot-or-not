@@ -20,6 +20,7 @@ const props = defineProps({
   games: Array,
 });
 const router = useRouter()
+const { league, updateLeague } = useLeague();
 
 function goToRate(scheduledGame) {
   const home = getTeamId(scheduledGame, 'home').id
@@ -29,7 +30,8 @@ function goToRate(scheduledGame) {
     name: 'rate',
     query: {
       home,
-      away
+      away,
+      league: league?.value
     },
   })
 }

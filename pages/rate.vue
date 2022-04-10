@@ -50,10 +50,13 @@ const route = useRoute();
 // should be team id
 const homeTeamId = computed(() => route.query.home);
 const awayTeamId = computed(() => route.query.away);
+const league = computed(() => route.query.league);
 
 // composable for player state
 const { player, updatePlayer } = usePlayer();
-const { league, updateLeague } = useLeague();
+const { updateLeague } = useLeague();
+// update league based on url
+updateLeague(league);
 // fetch players of the home team
 const { data: home } = await useAsyncData(
   "home",

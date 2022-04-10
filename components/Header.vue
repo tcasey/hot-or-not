@@ -25,7 +25,7 @@ export default {
   setup() {
     const { league, updateLeague } = useLeague();
 
-    return { updateLeague }
+    return { league, updateLeague }
   },
 }
 </script>

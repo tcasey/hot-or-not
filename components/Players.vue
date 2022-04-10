@@ -12,7 +12,7 @@ const props = defineProps({
 const {player, updatePlayer} = usePlayer()
 const { data: players } = await useFetch(`/api/players?id=${props?.team?.id}`)
 
-const athletes = ref(players.value.team.athletes);
+const athletes = ref(players.value.team.athletes.filter(athlete => athlete.headshot.href));
 
 updatePlayer(athletes?.value?.[0])
 

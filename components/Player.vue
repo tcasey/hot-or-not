@@ -1,7 +1,7 @@
 <template>
   <div class="player">
-    <p>{{player.fullName}}</p>
-    <img :src="player.headshot.href" class="headshot" />
+    <p>{{player?.fullName || 'Mystery Player'}}</p>
+    <img :src="player?.headshot?.href" class="headshot" />
   </div>
 </template>
 

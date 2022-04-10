@@ -49,6 +49,12 @@ export default {
   font: var(--subtitle-1);
 }
 
+@media only screen and (max-width: 600px) {
+  .app-header .app-header__name {
+    display: none;
+  }
+}
+
 .command-bar {
   display: flex;
   gap: 16px;

@@ -49,8 +49,8 @@ const { data: away } = await useAsyncData(
 
 // parse out athletes from players/team data
 const athletes = ref([
-  ...home?.value?.team?.athletes,
-  ...away?.value?.team?.athletes,
+  ...home?.value?.team?.athletes.filter(athlete => athlete?.headshot?.href),
+  ...away?.value?.team?.athletes.filter(athlete => athlete?.headshot?.href),
 ]);
 
 // // initial player to rate

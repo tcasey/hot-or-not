@@ -94,11 +94,20 @@ updatePlayer(athletes?.value?.[index?.value]);
   justify-content: space-around;
   align-items: center;
 }
+@media only screen and (max-width: 900px) {
+  .results {
+    flex-direction: column;
+  }
+}
 .home, .away {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
+}
+
+.home p, .away p {
+  text-align: center;
 }
 @media only screen and (max-width: 600px) {
   .rate img {

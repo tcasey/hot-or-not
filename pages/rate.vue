@@ -1,7 +1,13 @@
 <template>
   <div class="page">
-    <div class="rate" v-if="!homeRatings && !awayRatings">
-      <!-- change button content based on window -->
+    <Results
+      v-if="homeRatings && awayRatings"
+      :away="away"
+      :awayRatings="awayRatings"
+      :home="home"
+      :homeRatings="homeRatings"
+    />
+    <div class="rate" v-else>
       <a
         class="button hot"
         @click="() => updateRatings(player, 'hot', athletes, home, away)"
@@ -13,34 +19,6 @@
         @click="() => updateRatings(player, 'not', athletes, home, away)"
         ><span>🚫 not 🚫</span></a
       >
-    </div>
-    <div v-else class="results">
-      <div class="home">
-        <img :src="home?.team?.logos?.[0]?.href" />
-        <p>
-          You found <strong>{{ homeRatings }}%</strong> of the
-          {{ home?.team?.displayName }} attractive
-        </p>
-        <!-- <div class="player-results">
-          <div v-for="ratedPlayer in homeRatings" :key="ratedPlayer?.guid" class="player-result">
-            <Player :player="ratedPlayer" />
-            <p>{{ratedPlayer?.rating === 'hot' ? '🔥🔥🔥' : '🚫🚫🚫' }}</p>
-          </div>
-        </div> -->
-      </div>
-      <div class="away">
-        <img :src="away?.team?.logos?.[0]?.href" />
-        <p>
-          You found <strong>{{ awayRatings }}%</strong> of the
-          {{ away?.team?.displayName }} attractive
-        </p>
-        <!-- <div class="player-results">
-          <div v-for="ratedPlayer in awayRatings" :key="ratedPlayer?.guid" class="player-result">
-            <Player :player="ratedPlayer" />
-            <p>{{ratedPlayer?.rating === 'hot' ? '🔥🔥🔥' : '🚫🚫🚫' }}</p>
-          </div>
-        </div> -->
-      </div>
     </div>
   </div>
 </template>

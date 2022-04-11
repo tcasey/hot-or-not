@@ -92,7 +92,7 @@
   font: var(--title-5);
 }
 .last-name {
-  font: var(--display-2);
+  font: var(--title-1);
 }
 .bio {
   width: 100%;

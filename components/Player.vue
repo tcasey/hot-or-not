@@ -1,7 +1,9 @@
 <template>
   <div class="player">
     <div class="details">
-      <img :src="player?.headshot?.href" class="headshot" />
+      <div class="image-wrapper">
+        <img :src="player?.headshot?.href" class="headshot" />
+      </div>
       <div class="name">
         <p class="first-name">{{player?.firstName}}</p>
         <p class="last-name">{{player?.lastName}}</p>
@@ -48,9 +50,14 @@
 </script>
 
 <style scoped>
+.image-wrapper {
+  overflow: hidden;
+  max-width: 400px;
+  display: flex;
+  justify-content: center;
+}
 .player {
   width: auto;
-  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -101,6 +108,9 @@
   }
   .last-name {
     font: var(--title-4);
+  }
+  .image-wrapper {
+    max-width: 240px;
   }
 }
 .bio {

@@ -11,7 +11,7 @@
     <slot name="toolbar">
         <a class="action-link" @click="() => goHome('nba')">nba</a>
         <a class="action-link" @click="() => goHome('nhl')">nhl</a>
-        <a class="action-link" @click="() => goHome('wnba')">wnba</a>
+        <!-- <a class="action-link" @click="() => goHome('wnba')">wnba</a> -->
         <!-- <a class="action-link" @click="() => updateLeague('mbb')">mbb</a> -->
       </slot>
       <slot name="avatar"></slot>

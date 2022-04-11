@@ -78,7 +78,7 @@
   width: 24px;
 }
 .team-info p {
-  margin: 0 12px;
+  margin: 0 4px;
 }
 .headshot {
   height: auto;
@@ -93,6 +93,15 @@
 }
 .last-name {
   font: var(--title-1);
+}
+
+@media only screen and (max-width: 600px) {
+  .first-name {
+    font: var(--body-1);
+  }
+  .last-name {
+    font: var(--title-4);
+  }
 }
 .bio {
   width: 100%;

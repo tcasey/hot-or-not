@@ -29,24 +29,21 @@ const route = useRoute();
 const homeTeamId = computed(() => route.query.home);
 const awayTeamId = computed(() => route.query.away);
 const league = computed(() => route.query.league);
+const home = ref();
+const away = ref();
 
 // composable for player state
 const { player, updatePlayer } = usePlayer();
 const { updateLeague } = useLeague();
-// update league based on url
+
+  const { data: homeTeam} = await useFetch(`/api/players?id=${homeTeamId.value}&league=${league.value}`);
+  const { data: awayTeam } = await useFetch(`/api/players?id=${awayTeamId.value}&league=${league.value}`);
+  home.value = homeTeam.value
+  away.value = awayTeam.value
+
 if (league.value) {
   updateLeague(league.value);
 }
-// fetch players of the home team
-const { data: home } = await useAsyncData(
-  "home",
-  () => $fetch(`/api/players?id=${homeTeamId.value}&league=${league.value}`)
-);
-// fetch players of the home team
-const { data: away } = await useAsyncData(
-  "away",
-  () => $fetch(`/api/players?id=${awayTeamId.value}&league=${league.value}`)
-);
 
 
 // parse out athletes from players/team data
@@ -87,14 +84,16 @@ updatePlayer({ ...nextPlayer, team });
     flex-direction: column;
   }
 }
-.home, .away {
+.home,
+.away {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
 }
 
-.home p, .away p {
+.home p,
+.away p {
   text-align: center;
 }
 @media only screen and (max-width: 600px) {

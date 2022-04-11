@@ -16,8 +16,11 @@ export default () => {
     state.ratings = [...state.ratings, { ...who, rating: what }];
     // update index
     state.index = state.index + 1;
+    const nextPlayer = athletes?.[state.index];
+    const isHomeTeam = home.team.athletes.find(athlete => athlete.id === nextPlayer.id);
+    const team = isHomeTeam ? home.team : away.team;
     // update visible player
-    updatePlayer(athletes?.[state.index]);
+    updatePlayer({...nextPlayer, team});
 
     if (state.index === athletes.length) {
       const awayAthletes = away.team.athletes.filter(athlete => athlete?.headshot?.href);

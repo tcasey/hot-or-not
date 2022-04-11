@@ -54,11 +54,15 @@ const athletes = ref([
   ...home?.value?.team?.athletes.filter(athlete => athlete?.headshot?.href),
   ...away?.value?.team?.athletes.filter(athlete => athlete?.headshot?.href),
 ]);
-
-// // initial player to rate
+// initial player to rate
 const { ratings, homeRatings, awayRatings, index, updateRatings } = useRating();
+const nextPlayer = athletes?.value?.[index?.value];
+const isHomeTeam = home.value.team.athletes.find(athlete => athlete.id === nextPlayer.id);
+// const isAwayTeam = away.value.team.athletes.find(athlete => athlete.id === nextPlayer.id);
+const team = isHomeTeam ? home.value.team : away.value.team;
+
 // set default player
-updatePlayer(athletes?.value?.[index?.value]);
+updatePlayer({ ...nextPlayer, team });
 </script>
 
 <style>

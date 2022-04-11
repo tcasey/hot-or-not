@@ -16,6 +16,7 @@
       </slot>
       <slot name="avatar"></slot>
     </div>
+    <!-- toggle modes to see schedule, teams, or all players -->
     <slot name="commandbar" class="command-bar"></slot>
   </header>
 </template>

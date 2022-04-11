@@ -1,6 +1,6 @@
 <template>
   <!-- <Player v-for="player in athletes" :key="player.uid" :player="player" /> -->
-  <Player :player="player" />
+  <Player :player="player" :key="league" />
 </template>
 
 <script setup>

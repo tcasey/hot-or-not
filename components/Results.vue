@@ -33,8 +33,8 @@
 const props = defineProps({
   home: Object,
   away: Object,
-  awayRatings: Number,
-  homeRatings: Number,
+  awayRatings: String,
+  homeRatings: String,
 });
 </script>
 

@@ -17,7 +17,7 @@ export default () => {
     // update index
     state.index = state.index + 1;
     const nextPlayer = athletes?.[state.index];
-    const isHomeTeam = home.team.athletes.find(athlete => athlete.id === nextPlayer.id);
+    const isHomeTeam = home.team.athletes.find(athlete => athlete?.id === nextPlayer?.id);
     const team = isHomeTeam ? home.team : away.team;
     // update visible player
     updatePlayer({...nextPlayer, team});

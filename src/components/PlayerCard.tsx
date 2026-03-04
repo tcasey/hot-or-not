@@ -1,0 +1,144 @@
+import { motion, type Variants } from "framer-motion";
+
+interface PlayerCardProps {
+  player: any;
+  direction: "hot" | "not" | null;
+}
+
+const cardVariants: Variants = {
+  enter: {
+    opacity: 0,
+    scale: 0.8,
+    y: 60,
+    rotateY: -15,
+  },
+  center: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    rotateY: 0,
+    transition: {
+      type: "spring",
+      stiffness: 300,
+      damping: 30,
+    },
+  },
+  exitHot: {
+    opacity: 0,
+    x: 300,
+    rotate: 15,
+    scale: 0.8,
+    transition: { duration: 0.4, ease: "easeIn" },
+  },
+  exitNot: {
+    opacity: 0,
+    x: -300,
+    rotate: -15,
+    scale: 0.8,
+    transition: { duration: 0.4, ease: "easeIn" },
+  },
+};
+
+export default function PlayerCard({ player, direction }: PlayerCardProps) {
+  const exitVariant = direction === "hot" ? "exitHot" : "exitNot";
+
+  return (
+    <motion.div
+      key={player?.id || player?.uid}
+      variants={cardVariants}
+      initial="enter"
+      animate="center"
+      exit={exitVariant}
+      className="glass-strong p-6 sm:p-8 w-full max-w-sm mx-auto"
+    >
+      {/* Headshot */}
+      <div className="relative mb-6 overflow-hidden rounded-2xl bg-gradient-to-b from-white/5 to-transparent">
+        <motion.img
+          src={player?.headshot?.href}
+          alt={`${player?.firstName} ${player?.lastName}`}
+          className="w-full h-auto max-h-[280px] object-contain mx-auto drop-shadow-2xl"
+          initial={{ scale: 1.1, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ delay: 0.1, duration: 0.4 }}
+          onError={(e) => {
+            (e.target as HTMLImageElement).style.display = "none";
+          }}
+        />
+      </div>
+
+      {/* Name */}
+      <div className="text-center mb-4">
+        <motion.p
+          className="text-sm text-white/50 font-medium tracking-wider uppercase"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15 }}
+        >
+          {player?.firstName}
+        </motion.p>
+        <motion.p
+          className="text-3xl sm:text-4xl font-bold tracking-tight bg-gradient-to-r from-white via-white/90 to-white/70 bg-clip-text text-transparent"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+        >
+          {player?.lastName}
+        </motion.p>
+      </div>
+
+      {/* Team Info */}
+      <motion.div
+        className="flex items-center justify-center gap-2 mb-6"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.25 }}
+      >
+        {player?.team?.logos?.[0]?.href && (
+          <img
+            src={player.team.logos[0].href}
+            alt=""
+            className="w-6 h-6 object-contain"
+          />
+        )}
+        <span className="text-sm text-white/60">{player?.team?.name}</span>
+        {player?.jersey && (
+          <span className="text-sm text-white/40">#{player.jersey}</span>
+        )}
+        {player?.position?.abbreviation && (
+          <span className="text-xs px-2 py-0.5 rounded-full bg-white/10 text-white/50">
+            {player.position.abbreviation}
+          </span>
+        )}
+      </motion.div>
+
+      {/* Bio Stats */}
+      <motion.div
+        className="space-y-2.5 border-t border-white/10 pt-4"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3 }}
+      >
+        {player?.displayHeight && (
+          <div className="flex justify-between text-sm">
+            <span className="text-white/40 uppercase tracking-wider text-xs">HT/WT</span>
+            <span className="text-white/80 font-medium">
+              {player.displayHeight}{player.displayWeight ? `, ${player.displayWeight}` : ""}
+            </span>
+          </div>
+        )}
+        {player?.dateOfBirth && (
+          <div className="flex justify-between text-sm">
+            <span className="text-white/40 uppercase tracking-wider text-xs">DOB</span>
+            <span className="text-white/80 font-medium">{player.dateOfBirth}</span>
+          </div>
+        )}
+        {player?.draft?.displayText && (
+          <div className="flex justify-between text-sm">
+            <span className="text-white/40 uppercase tracking-wider text-xs">Draft</span>
+            <span className="text-white/80 font-medium">{player.draft.displayText}</span>
+          </div>
+        )}
+      </motion.div>
+    </motion.div>
+  );
+}

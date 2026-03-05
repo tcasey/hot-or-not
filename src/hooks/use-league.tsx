@@ -1,6 +1,5 @@
 import { createContext, useContext, useState, type ReactNode } from "react";
-
-type League = "nba" | "nhl";
+import type { League } from "~/lib/queries";
 
 interface LeagueContextType {
   league: League;

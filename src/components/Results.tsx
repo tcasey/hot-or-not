@@ -65,7 +65,12 @@ function TeamResult({
           className="w-24 h-24 sm:w-32 sm:h-32 object-contain mb-6 drop-shadow-2xl"
           initial={{ scale: 0, rotate: -180 }}
           animate={{ scale: 1, rotate: 0 }}
-          transition={{ delay: delay + 0.2, type: "spring", stiffness: 200, damping: 20 }}
+          transition={{
+            delay: delay + 0.2,
+            type: "spring",
+            stiffness: 200,
+            damping: 20,
+          }}
         />
       )}
       <p className="text-white/60 text-sm mb-2">You found</p>

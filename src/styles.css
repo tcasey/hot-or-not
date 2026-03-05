@@ -23,7 +23,7 @@
   box-sizing: border-box;
 }
 
-html, body, #root {
+html, body {
   height: 100%;
   width: 100%;
   overflow-x: hidden;
@@ -72,7 +72,6 @@ body {
   animation-delay: -10s;
 }
 
-/* Additional gradient orbs via children */
 .gradient-orb {
   position: absolute;
   border-radius: 50%;

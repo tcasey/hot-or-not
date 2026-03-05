@@ -28,7 +28,6 @@ export default function GameCard({ game, index, onClick }: GameCardProps) {
       onClick={onClick}
       className="glass w-full p-5 flex items-center gap-4 cursor-pointer group hover:bg-white/12 transition-all duration-300"
     >
-      {/* Away team */}
       <div className="flex items-center gap-3 flex-1 justify-end">
         <span className="text-white/90 font-semibold text-sm sm:text-base truncate text-right">
           {away?.team?.shortDisplayName || away?.team?.displayName || "Away"}
@@ -42,14 +41,12 @@ export default function GameCard({ game, index, onClick }: GameCardProps) {
         )}
       </div>
 
-      {/* VS divider */}
       <div className="flex-shrink-0 px-3">
         <span className="text-xs font-bold text-white/30 uppercase tracking-widest">
           vs
         </span>
       </div>
 
-      {/* Home team */}
       <div className="flex items-center gap-3 flex-1">
         {home?.team?.logo && (
           <img
@@ -63,7 +60,6 @@ export default function GameCard({ game, index, onClick }: GameCardProps) {
         </span>
       </div>
 
-      {/* Arrow */}
       <ChevronRight className="w-5 h-5 text-white/20 group-hover:text-white/50 group-hover:translate-x-1 transition-all flex-shrink-0" />
     </motion.button>
   );

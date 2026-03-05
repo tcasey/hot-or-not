@@ -51,7 +51,6 @@ export default function PlayerCard({ player, direction }: PlayerCardProps) {
       exit={exitVariant}
       className="glass-strong p-6 sm:p-8 w-full max-w-sm mx-auto"
     >
-      {/* Headshot */}
       <div className="relative mb-6 overflow-hidden rounded-2xl bg-gradient-to-b from-white/5 to-transparent">
         <motion.img
           src={player?.headshot?.href}
@@ -66,7 +65,6 @@ export default function PlayerCard({ player, direction }: PlayerCardProps) {
         />
       </div>
 
-      {/* Name */}
       <div className="text-center mb-4">
         <motion.p
           className="text-sm text-white/50 font-medium tracking-wider uppercase"
@@ -86,7 +84,6 @@ export default function PlayerCard({ player, direction }: PlayerCardProps) {
         </motion.p>
       </div>
 
-      {/* Team Info */}
       <motion.div
         className="flex items-center justify-center gap-2 mb-6"
         initial={{ opacity: 0 }}
@@ -111,7 +108,6 @@ export default function PlayerCard({ player, direction }: PlayerCardProps) {
         )}
       </motion.div>
 
-      {/* Bio Stats */}
       <motion.div
         className="space-y-2.5 border-t border-white/10 pt-4"
         initial={{ opacity: 0 }}
@@ -120,22 +116,33 @@ export default function PlayerCard({ player, direction }: PlayerCardProps) {
       >
         {player?.displayHeight && (
           <div className="flex justify-between text-sm">
-            <span className="text-white/40 uppercase tracking-wider text-xs">HT/WT</span>
+            <span className="text-white/40 uppercase tracking-wider text-xs">
+              HT/WT
+            </span>
             <span className="text-white/80 font-medium">
-              {player.displayHeight}{player.displayWeight ? `, ${player.displayWeight}` : ""}
+              {player.displayHeight}
+              {player.displayWeight ? `, ${player.displayWeight}` : ""}
             </span>
           </div>
         )}
         {player?.dateOfBirth && (
           <div className="flex justify-between text-sm">
-            <span className="text-white/40 uppercase tracking-wider text-xs">DOB</span>
-            <span className="text-white/80 font-medium">{player.dateOfBirth}</span>
+            <span className="text-white/40 uppercase tracking-wider text-xs">
+              DOB
+            </span>
+            <span className="text-white/80 font-medium">
+              {player.dateOfBirth}
+            </span>
           </div>
         )}
         {player?.draft?.displayText && (
           <div className="flex justify-between text-sm">
-            <span className="text-white/40 uppercase tracking-wider text-xs">Draft</span>
-            <span className="text-white/80 font-medium">{player.draft.displayText}</span>
+            <span className="text-white/40 uppercase tracking-wider text-xs">
+              Draft
+            </span>
+            <span className="text-white/80 font-medium">
+              {player.draft.displayText}
+            </span>
           </div>
         )}
       </motion.div>

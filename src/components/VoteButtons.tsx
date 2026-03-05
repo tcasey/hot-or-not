@@ -9,7 +9,6 @@ interface VoteButtonsProps {
 export default function VoteButtons({ onHot, onNot }: VoteButtonsProps) {
   return (
     <div className="flex gap-4 sm:gap-6 justify-center w-full max-w-sm mx-auto">
-      {/* NOT button */}
       <motion.button
         whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.92 }}
@@ -23,7 +22,6 @@ export default function VoteButtons({ onHot, onNot }: VoteButtonsProps) {
         </span>
       </motion.button>
 
-      {/* HOT button */}
       <motion.button
         whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.92 }}

@@ -1,18 +1,19 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+import tsConfigPaths from "vite-tsconfig-paths";
+import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import tailwindcss from "@tailwindcss/vite";
-import path from "path";
+import react from "@vitejs/plugin-react";
+import { nitro } from "nitro/vite";
 
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
-  },
   server: {
-    proxy: {
-      "/api": "http://localhost:3001",
-    },
+    port: 3000,
   },
+  plugins: [
+    tailwindcss(),
+    tsConfigPaths({ projects: ["./tsconfig.json"] }),
+    tanstackStart({ srcDirectory: "src" }),
+    react(),
+    nitro(),
+  ],
 });

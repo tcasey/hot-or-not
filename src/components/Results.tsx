@@ -98,7 +98,7 @@ export default function Results({
   onPlayAgain,
 }: ResultsProps) {
   return (
-    <div className="flex-1 flex flex-col items-center justify-center px-4 py-8 gap-6">
+    <div className="flex-1 flex flex-col items-center justify-center px-5 sm:px-6 py-8 gap-6">
       <motion.h2
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -120,7 +120,7 @@ export default function Results({
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={onPlayAgain}
-        className="glass mt-6 px-8 py-3 flex items-center gap-2 text-white/80 font-medium hover:text-white hover:bg-white/12 transition-all cursor-pointer"
+        className="glass mt-6 px-10 py-4 flex items-center gap-3 text-white/80 font-semibold text-lg hover:text-white hover:bg-white/12 active:bg-white/10 transition-all cursor-pointer min-h-[56px]"
       >
         <RotateCcw className="w-4 h-4" />
         Play Again

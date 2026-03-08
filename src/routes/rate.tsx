@@ -29,7 +29,6 @@ export const Route = createFileRoute("/rate")({
 });
 
 function RateWrapper() {
-  const { league } = Route.useSearch();
   return (
     <LeagueProvider>
       <AnimatedBackground />
@@ -64,17 +63,6 @@ function RatePage() {
     }
   });
 
-  const { isLoading: homeLoading } = useQuery({
-    ...playersQueryOptions(homeId, leagueParam),
-    enabled: !!homeId,
-  });
-
-  const { isLoading: awayLoading } = useQuery({
-    ...playersQueryOptions(awayId, leagueParam),
-    enabled: !!awayId,
-  });
-
-  // Combine both team queries
   const homeQuery = useQuery({
     ...playersQueryOptions(homeId, leagueParam),
     enabled: !!homeId,
@@ -152,12 +140,12 @@ function RatePage() {
 
   if (loading) {
     return (
-      <div className="flex-1 flex items-center justify-center">
+      <div className="flex-1 flex items-center justify-center px-6">
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
         >
-          <Loader2 className="w-8 h-8 text-white/40" />
+          <Loader2 className="size-8 text-white/40" />
         </motion.div>
       </div>
     );
@@ -176,20 +164,25 @@ function RatePage() {
   }
 
   return (
-    <div className="flex-1 flex flex-col items-center justify-center px-4 py-6 gap-6">
+    <div className="flex-1 flex flex-col items-center justify-center px-5 sm:px-6 py-6 gap-5 sm:gap-6">
       <ProgressBar current={index} total={athletes.length} />
 
-      <div className="w-full max-w-sm" style={{ minHeight: 480 }}>
+      <div className="w-full max-w-sm relative" style={{ minHeight: 440 }}>
         <AnimatePresence mode="wait">
           {currentPlayer && !direction && (
             <PlayerCard
               key={currentPlayer.id || currentPlayer.uid || index}
               player={currentPlayer}
               direction={direction}
+              onSwipe={vote}
             />
           )}
         </AnimatePresence>
       </div>
+
+      <p className="text-xs text-white/30 text-center sm:hidden">
+        Swipe right for Hot, left for Not
+      </p>
 
       <VoteButtons onHot={() => vote("hot")} onNot={() => vote("not")} />
     </div>

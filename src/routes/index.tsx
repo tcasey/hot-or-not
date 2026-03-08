@@ -57,7 +57,7 @@ function HomePage() {
   };
 
   return (
-    <div className="flex-1 flex flex-col items-center px-4 py-8 sm:py-12">
+    <div className="flex-1 flex flex-col items-center px-5 sm:px-6 py-8 sm:py-12">
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}

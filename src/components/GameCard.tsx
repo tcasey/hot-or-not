@@ -26,7 +26,7 @@ export default function GameCard({ game, index, onClick }: GameCardProps) {
       whileHover={{ scale: 1.02, y: -2 }}
       whileTap={{ scale: 0.98 }}
       onClick={onClick}
-      className="glass w-full p-5 flex items-center gap-4 cursor-pointer group hover:bg-white/12 transition-all duration-300"
+      className="glass w-full p-5 sm:p-6 flex items-center gap-4 cursor-pointer group hover:bg-white/12 active:bg-white/10 transition-all duration-300 min-h-[72px] sm:min-h-[80px]"
     >
       <div className="flex items-center gap-3 flex-1 justify-end">
         <span className="text-white/90 font-semibold text-sm sm:text-base truncate text-right">
